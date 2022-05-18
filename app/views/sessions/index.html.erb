@@ -2,6 +2,6 @@
 
 <% @sessions.each do |session| %>
     <p>
-        <%= link_to session.title, session %> made by <%= session.gamemaster %>
+        <%= link_to session.title, session %> made by <%= link_to session.gamemaster.name, session.gamemaster %>
     </p>
 <% end %>
