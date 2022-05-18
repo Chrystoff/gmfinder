@@ -12,7 +12,8 @@ Gamemaster.destroy_all  # has_many sessions & has_many games, through sessions
 Player.destroy_all      # has_many sessions & has_many games, through sessions
 
 # list of 5 seeded games
-coc = Game.create!(name: "Call of Cthulhu", system: "Basic Roleplaying", difficulty: "5", mature_content: true)
+dnd = Game.create!(name: "Dungeons & Dragons", system: "d20 System", difficulty: "5", mature_content: false)
+coc = Game.create!(name: "Call of Cthulhu", system: "Basic Roleplaying", difficulty: "4", mature_content: true)
 dg = Game.create!(name: "Delta Green", system: "Basic Roleplaying", difficulty: "6", mature_content: true)
 wfrp = Game.create!(name: "Warhammer Fantasy Roleplay", system: "Percentile", difficulty: "8", mature_content: true)
 sf = Game.create!(name: "Starfinder", system: "d20 System", difficulty: "5", mature_content: false)
@@ -20,12 +21,15 @@ alien = Game.create!(name: "Alien", system: "Year Zero Engine", difficulty: "4",
 
 # A game master
 brian = Gamemaster.create!(name: "BriMac", experience: "2", availability: "Weekends")
+jacob = Gamemaster.create!(name: "JacMac", experience: "1", availability: "Weekdays")
 
 # A player
 ariel = Player.create!(name: "AriCha", experience: "0", availability: "Weekends")
+dan = Player.create!(name: "DanMac", experience: "1", availability: "Weekdays")
 
 # A session made through the 'wfrp' game
-wfrp.sessions.create!(title: "New Session!", gamemaster_id: "1", player_id: "1")
+wfrp.sessions.create!(title: "WFRP Session!", gamemaster_id: "1", player_id: "1")
+dnd.sessions.create!(title: "Dungeons And Dragons Session!", gamemaster_id: "2", player_id: "2")
 
 puts "Games: #{Game.count}"
 puts "Sessions: #{Session.count}"

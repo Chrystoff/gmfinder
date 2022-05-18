@@ -1,0 +1,7 @@
+<h1>Gamemasters</h1>
+
+<% @gamemasters.each do |gamemaster| %>
+    <p>
+        <%= link_to gamemaster.name, gamemaster %>
+    </p>
+<% end %>
