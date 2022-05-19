@@ -33,7 +33,7 @@ class GamemasterPolicy
   end
 
   def destroy?
-    return @user.has_role? :admin
+    return @user && (@user.has_role? :admin)
   end
 
   class Scope

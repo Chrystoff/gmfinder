@@ -1,6 +1,6 @@
 <h1><%= @game.name %></h1>
 
-<% if policy(@game).edit? || policy(@game).destroy? %>
+<% if user_signed_in? && (policy(@game).edit? || policy(@game).destroy?) %>
     <div class="btn-toolbar mt-3">
         <%= link_to('Edit', edit_game_path(@game), class: 'btn btn-warning me-2') if policy(@game).edit? %>
         <%= button_to('Delete', @game, class: 'btn btn-danger', method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete '#{@game.name}' ?" } }) if policy(@game).destroy? %>
