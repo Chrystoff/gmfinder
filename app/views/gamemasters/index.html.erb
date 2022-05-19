@@ -1,9 +1,10 @@
-<h1>Gamemasters</h1>
-
-<%= link_to 'New Gamemaster', gamemasters_new_path, class: "btn btn-primary"%>
+<h1>
+    Gamemasters
+    <%= user_signed_in? ? link_to('New Gamemaster', new_gamemaster_path, class: "btn btn-primary") : '' %>
+</h1>
 
 <% @gamemasters.each do |gamemaster| %>
-    <p>
-        <%= link_to gamemaster.name, gamemaster %>
-    </p>
+  <p>
+    <%= link_to gamemaster.name, gamemaster %>
+  </p>
 <% end %>

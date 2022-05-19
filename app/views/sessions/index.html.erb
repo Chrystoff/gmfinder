@@ -1,4 +1,7 @@
-<h1>Sessions</h1>
+<h1>
+    Sessions
+    <%= user_signed_in? ? link_to('New Session', new_session_path, class: "btn btn-primary") : '' %>
+</h1>
 
 <% @sessions.each do |session| %>
     <p>
