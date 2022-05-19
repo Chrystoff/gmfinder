@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_scope :user do
-    # fixed an issue I had with devise 'user session' and my own 'session' clashing. found online @ https://stackoverflow.com/questions/18392033/no-route-matches-post-sessions-user
+    # fixed an issue I had with devise 'user session' and my own 'session' clashing. 
+    # found online @ https://stackoverflow.com/questions/18392033/no-route-matches-post-sessions-user
     match '/sessions/user', to: 'devise/sessions#create', via: :post
   end
 
@@ -11,6 +12,9 @@ Rails.application.routes.draw do
   resources :games
   resources :gamemasters
 
+  # Kept older code incase something broke with new adjustments, 
+  # plus I spent ages putting it together and felt cheated when I remembered the above code.
+  # Definitely deletable at this point.
 
   # get 'sessions', to: 'sessions#index'
   # get 'sessions/new', to: 'sessions#new'
