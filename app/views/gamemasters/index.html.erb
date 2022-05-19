@@ -1,5 +1,7 @@
 <h1>Gamemasters</h1>
 
+<%= link_to 'New Gamemaster', gamemasters_new_path, class: "btn btn-primary"%>
+
 <% @gamemasters.each do |gamemaster| %>
     <p>
         <%= link_to gamemaster.name, gamemaster %>

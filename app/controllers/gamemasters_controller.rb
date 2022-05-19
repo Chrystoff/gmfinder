@@ -1,8 +1,7 @@
 class GamemastersController < ApplicationController
-  skip_before_action :verify_authenticity_token
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_game, only: [:show, :destroy, :update] #except: [:index, :create]
-  before_action :set_foreigns, only: [:new, :edit]
+  # before_action :set_foreigns, only: [:new, :edit]
 
   def index
     @gamemasters = Gamemaster.order(:name)
@@ -39,11 +38,11 @@ class GamemastersController < ApplicationController
     @gamemaster = Gamemaster.find(params[:id])
   end
   
-  def set_foreigns
-    @games = Game.all
-    @sessions = Session.all
-    @players = Player.all
-  end
+  # def set_foreigns
+  #   @games = Game.all
+  #   @sessions = Session.all
+  #   @players = Player.all
+  # end
 
   def gamemaster_params
     return params.require(:gamemaster).permit(:name)
