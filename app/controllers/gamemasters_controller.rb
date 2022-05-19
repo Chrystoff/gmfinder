@@ -50,6 +50,6 @@ class GamemastersController < ApplicationController
   # end
 
   def gamemaster_params
-    return params.require(:gamemaster).permit(:name)
+    return params.require(:gamemaster).permit(:name, :profilepic)
   end
 end

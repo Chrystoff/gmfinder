@@ -29,6 +29,7 @@ class GamesController < ApplicationController
   end
   
   def destroy
+    @game.cover.purge
     @game.destroy
     redirect_to games_path
   end
@@ -50,6 +51,6 @@ class GamesController < ApplicationController
   # end
 
   def game_params
-    return params.require(:game).permit(:name)
+    return params.require(:game).permit(:name, :cover)
   end
 end

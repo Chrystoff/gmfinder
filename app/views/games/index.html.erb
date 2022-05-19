@@ -5,6 +5,7 @@
 
 <% @games.each do |game| %>
     <p>
+        <%= cl_image_tag game.cover.key, :height=>100, :width=>150, crop: :limit, cloud_name: 'macreadiebri' %>
         <%= link_to game.name, game %>
     </p>
 <% end %>
