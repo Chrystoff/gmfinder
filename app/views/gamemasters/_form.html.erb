@@ -1,0 +1,10 @@
+<%= form_with(model: @gamemaster) do |f| %>
+    <fieldset class="mb-2">
+        <%= f.label :name %>
+        <br>
+        <%= f.text_field :name %>
+    </fieldset>
+    <fieldset>
+        <%= f.submit %>
+    </fieldset>
+<% end %>

@@ -1,0 +1,40 @@
+<%= form_with(model: @session) do |f| %>
+  <fieldset class="mb-2">
+    <%= f.label :title %>
+    <br>
+    <%= f.text_field :title %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :time %>
+    <br>
+    <%= f.date_field :time %> recurring weekly therafter
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :length %>
+    <br>
+    <%= f.number_field :length %> Hour Session
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :game_id %>
+    <br>
+    <%= f.collection_select :game_id, @games, :id, :name %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :gamemaster_id %>
+    <br>
+    <%= f.collection_select :gamemaster_id, @gamemasters, :id, :name %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :player_id %>
+    <br>
+    <%= f.collection_select :player_id, @players, :id, :name %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :description %>
+    <br>
+    <%= f.text_area :description %>
+  </fieldset>
+  <fieldset>
+    <%= f.submit %>
+  </fieldset>
+<% end %>

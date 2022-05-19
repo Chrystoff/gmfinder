@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :authenticate_user!, except: [:index, :show, :create, :new]
-  before_action :set_session, only: [:show, :destroy, :update] #except: [:index, :create]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_session, only: [:show, :destroy, :update, :edit] #except: [:index, :create]
+  before_action :set_foreigns, only: [:new, :edit]
 
   def index
     @sessions = Session.order(:title)
@@ -12,15 +13,14 @@ class SessionsController < ApplicationController
 
   def new
     @session = Session.new
-    # These following instance variables so the list collection_selector works in new session form
-    @gamemasters = Gamemaster.all
-    @games = Game.all
-    @players = Player.all
   end
 
   def create
     session = Session.create!(session_params)
     redirect_to session
+  end
+
+  def edit
   end
 
   def update
@@ -37,6 +37,12 @@ class SessionsController < ApplicationController
 
   def set_session
     @session = Session.find(params[:id])
+  end
+
+  def set_foreigns
+    @gamemasters = Gamemaster.all
+    @games = Game.all
+    @players = Player.all
   end
 
   def session_params
