@@ -6,10 +6,11 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Session.destroy_all     # belongs_to game/gamemaster/player
-Game.destroy_all        # has_many sessions
-Gamemaster.destroy_all  # has_many sessions & has_many games, through sessions
-Player.destroy_all      # has_many sessions & has_many games, through sessions
+# Session.destroy_all     # belongs_to game/gamemaster/player
+# Game.destroy_all        # has_many sessions
+# Gamemaster.destroy_all  # has_many sessions & has_many games, through sessions
+# Player.destroy_all      # has_many sessions & has_many games, through sessions
+
 
 # list of 5 seeded games
 dnd = Game.create!(name: "Dungeons & Dragons", system: "d20 System", difficulty: "5", mature_content: false)
@@ -27,7 +28,30 @@ jacob = Gamemaster.create!(name: "JacMac", experience: "1", availability: "Weekd
 ariel = Player.create!(name: "AriCha", experience: "0", availability: "Weekends")
 dan = Player.create!(name: "DanMac", experience: "1", availability: "Weekdays")
 
-# A session made through the 'wfrp' game
+# adding default accounts for different levels of access
+adminacc = User.new
+adminacc.email = 'admin@foo.com'
+adminacc.password = 'admin123'
+adminacc.password_confirmation = 'admin123'
+adminacc.save!
+
+gmacc = User.new
+gmacc.email = 'gm@foo.com'
+gmacc.password = 'game123'
+gmacc.password_confirmation = 'game123'
+gmacc.save!
+
+playeracc = User.new
+playeracc.email = 'player@foo.com'
+playeracc.password = 'player123'
+playeracc.password_confirmation = 'player123'
+playeracc.save!
+
+User.find(1).add_role :admin
+User.find(2).add_role :game_master
+User.find(3).add_role :player
+
+# two sessions made through game
 wfrp.sessions.create!(title: "WFRP Session!", gamemaster_id: "1", player_id: "1")
 dnd.sessions.create!(title: "Dungeons And Dragons Session!", gamemaster_id: "2", player_id: "2")
 
@@ -35,3 +59,5 @@ puts "Games: #{Game.count}"
 puts "Sessions: #{Session.count}"
 puts "GameMasters: #{Gamemaster.count}"
 puts "Players: #{Player.count}"
+puts "Users: #{User.count}"
+puts "Roles: #{Role.count}"

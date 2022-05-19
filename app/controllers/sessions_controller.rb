@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :check_auth
   before_action :set_session, only: [:show, :destroy, :update, :edit] #except: [:index, :create]
   before_action :set_foreigns, only: [:new, :edit]
 
@@ -33,6 +34,10 @@ class SessionsController < ApplicationController
   end
 
   private
+
+  def check_auth
+    authorize Session
+  end
 
   def set_session
     @session = Session.find(params[:id])

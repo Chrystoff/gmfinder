@@ -1,6 +1,6 @@
 <h1>
     Games
-    <%= user_signed_in? ? link_to('New Game', new_game_path, class: "btn btn-primary") : '' %>
+    <%= user_signed_in? && policy(Game).new? ? link_to('New Game', new_game_path, class: "btn btn-primary") : '' %>
 </h1>
 
 <% @games.each do |game| %>

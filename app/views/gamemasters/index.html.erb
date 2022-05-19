@@ -1,6 +1,6 @@
 <h1>
     Gamemasters
-    <%= user_signed_in? ? link_to('New Gamemaster', new_gamemaster_path, class: "btn btn-primary") : '' %>
+    <%= user_signed_in? && policy(Gamemaster).new? ? link_to('New Gamemaster', new_gamemaster_path, class: "btn btn-primary") : '' %>
 </h1>
 
 <% @gamemasters.each do |gamemaster| %>

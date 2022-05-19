@@ -1,5 +1,6 @@
 class GamemastersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :check_auth
   before_action :set_gamemaster, only: [:show, :destroy, :update, :edit] #except: [:index, :create]
   # before_action :set_foreigns, only: [:new, :edit]
 
@@ -33,6 +34,10 @@ class GamemastersController < ApplicationController
   end
 
   private
+
+  def check_auth
+    authorize Gamemaster
+  end
 
   def set_gamemaster
     @gamemaster = Gamemaster.find(params[:id])

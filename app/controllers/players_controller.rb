@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :check_auth
   before_action :set_player, only: [:show, :destroy, :update, :edit] #except: [:index, :create]
   # before_action :set_foreigns, only: [:new, :edit]
 
@@ -33,6 +34,10 @@ class PlayersController < ApplicationController
   end
 
   private
+
+  def check_auth
+    authorize Player
+  end
 
   def set_player
     @player = Player.find(params[:id])
