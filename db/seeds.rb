@@ -29,23 +29,29 @@ ariel = Player.create!(name: "AriCha", experience: "0", availability: "Weekends"
 dan = Player.create!(name: "DanMac", experience: "1", availability: "Weekdays")
 
 # adding default accounts for different levels of access
-adminacc = User.new
-adminacc.email = 'admin@foo.com'
-adminacc.password = 'admin123'
-adminacc.password_confirmation = 'admin123'
-adminacc.save!
+# adminacc = User.new
+# adminacc.email = 'admin@foo.com'
+# adminacc.password = 'admin123'
+# adminacc.password_confirmation = 'admin123'
+# adminacc.save!
+adminacc = User.create(email: 'admin@test.com', password: 'admin123')
+adminacc.add_role :admin
 
-gmacc = User.new
-gmacc.email = 'gm@foo.com'
-gmacc.password = 'game123'
-gmacc.password_confirmation = 'game123'
-gmacc.save!
+# gmacc = User.new
+# gmacc.email = 'gm@foo.com'
+# gmacc.password = 'game123'
+# gmacc.password_confirmation = 'game123'
+# gmacc.save!
+gmacc = User.create(email: 'gm@test.com', password: 'game123')
+gmacc.add_role :game_master
 
-playeracc = User.new
-playeracc.email = 'player@foo.com'
-playeracc.password = 'player123'
-playeracc.password_confirmation = 'player123'
-playeracc.save!
+# playeracc = User.new
+# playeracc.email = 'player@foo.com'
+# playeracc.password = 'player123'
+# playeracc.password_confirmation = 'player123'
+# playeracc.save!
+playeracc = User.create(email: 'player@test.com', password: 'player123')
+playeracc.add_role :player
 
 User.find(1).add_role :admin
 User.find(2).add_role :game_master
