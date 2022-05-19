@@ -1,6 +1,6 @@
 <h1>
     Players
-    <%= user_signed_in? && policy(Player).new? ? link_to('New Player', new_player_path, class: "btn btn-primary") : '' %>
+    <%= policy(Player).new? ? link_to('New Player', new_player_path, class: "btn btn-primary") : '' %>
 </h1>
 
 <% @players.each do |player| %>

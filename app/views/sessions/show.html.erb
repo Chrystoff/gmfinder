@@ -1,9 +1,9 @@
 <h1> <%= @session.title %> </h1>
 <h3> created by <%= link_to @session.gamemaster.name %> </h3>
 
-<% if user_signed_in? %>
+<% if policy(@session).edit? || policy(@session).destroy? %>
     <div class="btn-toolbar mt-3">
-        <%= link_to('Edit', edit_session_path(@session), class: 'btn btn-warning me-2') if policy(@session).update? %>
+        <%= link_to('Edit', edit_session_path(@session), class: 'btn btn-warning me-2') if policy(@session).edit? %>
         <%= button_to('Delete', @session, class: 'btn btn-danger', method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete '#{@session.title}' ?" } }) if policy(@session).destroy? %>
     </div>
 <% end %>
