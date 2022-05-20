@@ -1,6 +1,6 @@
 <h1><%= @player.name %></h1>
 
-<%= cl_image_tag(@player.profilepic.key, crop: :scale, width: 250, cloud_name: 'macreadiebri') if @player.profilepic.attached? %>
+<%= cl_image_tag(@player.profilepic.key, crop: :scale, width: 250, cloud_name: ENV['CLOUDINARY_CLOUD_NAME']) if @player.profilepic.attached? %>
 
 <% if user_signed_in? && (policy(@player).edit? || policy(@player).destroy?) %>
     <div class="btn-toolbar mt-3">

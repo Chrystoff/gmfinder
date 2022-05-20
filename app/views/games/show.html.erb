@@ -1,6 +1,6 @@
 <h1><%= @game.name %></h1>
 
-<%= cl_image_tag(@game.cover.key, crop: :scale, width: 250, cloud_name: 'macreadiebri') if @game.cover.attached? %>
+<%= cl_image_tag(@game.cover.key, crop: :scale, width: 250, cloud_name: ENV['CLOUDINARY_CLOUD_NAME']) if @game.cover.attached? %>
 
 <% if user_signed_in? && (policy(@game).edit? || policy(@game).destroy?) %>
     <div class="btn-toolbar mt-3">

@@ -5,7 +5,7 @@
 
 <% @sessions.each do |session| %>
   <p>
-    <%= cl_image_tag(session.material.key, :height=>100, :width=>150, crop: :limit, cloud_name: 'macreadiebri') if session.material.attached? %>
+    <%= cl_image_tag(session.material.key, :height=>100, :width=>150, crop: :limit, cloud_name: ENV['CLOUDINARY_CLOUD_NAME']) if session.material.attached? %>
     <%= link_to session.title, session %> made by <%= link_to session.gamemaster.name, session.gamemaster %>
   </p>
 <% end %>

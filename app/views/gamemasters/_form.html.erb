@@ -5,7 +5,7 @@
         <%= f.text_field :name %>
     </fieldset>
     <fieldset class="mb-2">
-        <%= cl_image_tag @gamemaster.profilepic.key, :height=>100, :width=>150, crop: :limit, cloud_name: 'macreadiebri' %>
+        <%= cl_image_tag @gamemaster.profilepic.key, :height=>100, :width=>150, crop: :limit, cloud_name: ENV['CLOUDINARY_CLOUD_NAME'] %>
     </fieldset>
     <fieldset class="mb-2">
         <%= f.label :profilepic %>
