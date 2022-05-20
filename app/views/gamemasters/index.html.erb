@@ -5,6 +5,7 @@
 
 <% @gamemasters.each do |gamemaster| %>
   <p>
+    <%= cl_image_tag(gamemaster.profilepic.key, :height=>100, :width=>150, crop: :limit, cloud_name: 'macreadiebri') if gamemaster.profilepic.attached? %>
     <%= link_to gamemaster.name, gamemaster %>
   </p>
 <% end %>

@@ -29,6 +29,7 @@ class SessionsController < ApplicationController
   end
   
   def destroy
+    @session.material.purge
     @session.destroy
     redirect_to sessions_path
   end
@@ -50,6 +51,6 @@ class SessionsController < ApplicationController
   end
 
   def session_params
-    return params.require(:session).permit(:title, :gamemaster_id, :player_id, :game_id)
+    return params.require(:session).permit(:title, :material, :gamemaster_id, :player_id, :game_id)
   end
 end

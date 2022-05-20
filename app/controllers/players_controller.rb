@@ -29,6 +29,7 @@ class PlayersController < ApplicationController
   end
   
   def destroy
+    @player.profilepic.purge
     @player.destroy
     redirect_to players_path
   end
@@ -50,6 +51,6 @@ class PlayersController < ApplicationController
   # end
 
   def player_params
-    return params.require(:player).permit(:name)
+    return params.require(:player).permit(:name, :profilepic)
   end
 end

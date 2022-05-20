@@ -29,6 +29,7 @@ class GamemastersController < ApplicationController
   end
   
   def destroy
+    @gamemaster.profilepic.purge
     @gamemaster.destroy
     redirect_to gamemasters_path
   end
