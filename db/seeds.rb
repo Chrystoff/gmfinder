@@ -31,12 +31,8 @@ gmacc.add_role :game_master
 playeracc = User.create(email: 'player@test.com', password: 'player123')
 playeracc.add_role :player
 
-# two sessions made through game
-wfrp.sessions.create!(title: "WFRP Session!", length: "2", gamemaster_id: "1", player_id: "1")
-dnd.sessions.create!(title: "Dungeons And Dragons Session!", length: "2", gamemaster_id: "2", player_id: "2")
 
 puts "Games: #{Game.count}"
-puts "Sessions: #{Session.count}"
 puts "GameMasters: #{Gamemaster.count}"
 puts "Players: #{Player.count}"
 puts "Users: #{User.count}"
