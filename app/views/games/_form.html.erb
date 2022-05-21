@@ -1,8 +1,27 @@
-<%= form_with(model: @game) do |f| %>
+<%= form_with(model: @game, data: {turbo: false}) do |f| %>
   <fieldset class="mb-2">
     <%= f.label :name %>
     <br>
     <%= f.text_field :name %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :system %>
+    <br>
+    <%= f.text_field :system %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :difficulty %>
+    <br>
+    <%= f.number_field :difficulty %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :mature_content %>:
+    <%= f.check_box :mature_content %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :description %>
+    <br>
+    <%= f.text_area :description %>
   </fieldset>
   <fieldset class="mb-2">
     <%= cl_image_tag @game.cover.key, :height=>100, :width=>150, crop: :limit, cloud_name: ENV['CLOUDINARY_CLOUD_NAME'] %>

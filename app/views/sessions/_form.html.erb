@@ -1,4 +1,4 @@
-<%= form_with(model: @session) do |f| %>
+<%= form_with(model: @session, data: {turbo: false}) do |f| %>
   <fieldset class="mb-2">
     <%= f.label :title %>
     <br>
@@ -7,7 +7,8 @@
   <fieldset class="mb-2">
     <%= f.label :time %>
     <br>
-    <%= f.date_field :time %> recurring weekly therafter
+    <%= f.date_field :time %>
+    <%= f.time_select :time %>
   </fieldset>
   <fieldset class="mb-2">
     <%= f.label :length %>

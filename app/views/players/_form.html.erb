@@ -1,8 +1,23 @@
-<%= form_with(model: @player) do |f| %>
+<%= form_with(model: @player, data: {turbo: false}) do |f| %>
   <fieldset class="mb-2">
     <%= f.label :name %>
     <br>
     <%= f.text_field :name %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :experience %>:
+    <br>
+    <%= f.number_field :experience %>
+  </fieldset>
+  <fieldset class="mb-2">
+    Weekly <%= f.label :availability %>:
+    <br>
+    <%= f.text_field :availability %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :about %>:
+    <br>
+    <%= f.text_area :about %>
   </fieldset>
   <fieldset class="mb-2">
     <%= cl_image_tag @player.profilepic.key, :height=>100, :width=>150, crop: :limit, cloud_name: ENV['CLOUDINARY_CLOUD_NAME'] %>

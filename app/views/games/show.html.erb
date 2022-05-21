@@ -1,6 +1,23 @@
-<h1><%= @game.name %></h1>
-
+<h1> <%= @game.name %> </h1>
 <%= cl_image_tag(@game.cover.key, crop: :scale, width: 250, cloud_name: ENV['CLOUDINARY_CLOUD_NAME']) if @game.cover.attached? %>
+
+<div style="text-decoration: underline;"><strong>About:</strong></div>
+<ul>
+    <li>
+        System: <%= @game.system %>
+    </li>
+    <li>
+        Complexity: <%= @game.difficulty %>/10
+    </li>
+    <li>
+        <%= @game.mature_content ? "Mature content & themes" : "Child friendly" %>
+    </li>
+    <% if @game.description.present? %>
+        <li>
+            Description: <%= @game.description %>
+        </li>
+    <% end %>
+</ul>
 
 <% if user_signed_in? && (policy(@game).edit? || policy(@game).destroy?) %>
     <div class="btn-toolbar mt-3">

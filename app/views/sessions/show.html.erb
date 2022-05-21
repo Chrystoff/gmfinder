@@ -3,6 +3,28 @@
 
 <%= cl_image_tag(@session.material.key, crop: :scale, width: 250, cloud_name: ENV['CLOUDINARY_CLOUD_NAME']) if @session.material.attached? %>
 
+<div style="text-decoration: underline;"><strong>Details:</strong></div>
+<ul>
+    <li>
+        Game: <%= @session.game.name %>
+    </li>
+    <li>
+        Start Date: <%= @session.time %>
+    </li>
+    <li>
+        Length: <%= @session.length %> hours
+    </li>
+    <li>
+        Players: <%= @session.player.name %>
+    </li>
+    <% if @session.description.present? %>
+        <li>
+            About: <%= @session.description %>
+        </li>
+    <% end %>
+</ul>
+
+
 <% if user_signed_in? && (policy(@session).edit? || policy(@session).destroy?) %>
     <div class="btn-toolbar mt-3">
         <%= link_to('Edit', edit_session_path(@session), class: 'btn btn-warning me-2') if policy(@session).edit? %>
