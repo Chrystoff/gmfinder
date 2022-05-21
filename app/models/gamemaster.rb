@@ -1,5 +1,5 @@
 class Gamemaster < ApplicationRecord
-    has_many :sessions
+    has_many :sessions, dependent: :destroy
 
     has_one_attached :profilepic
 
