@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-# Session.destroy_all     # belongs_to game/gamemaster/player
-# Game.destroy_all        # has_many sessions
-# Gamemaster.destroy_all  # has_many sessions & has_many games, through sessions
-# Player.destroy_all      # has_many sessions & has_many games, through sessions
+Session.destroy_all     # belongs_to game/gamemaster/player
+Game.destroy_all        # has_many sessions
+Gamemaster.destroy_all  # has_many sessions & has_many games, through sessions
+Player.destroy_all      # has_many sessions & has_many games, through sessions
 
 
 # list of 5 seeded games
