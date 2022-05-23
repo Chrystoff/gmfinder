@@ -30,8 +30,7 @@ class PlayersController < ApplicationController
 
   def update
     begin
-      @player = Player.new(player_params)
-      @player.save!
+      @player.update!(player_params)
       redirect_to @player
     rescue
       flash.now[:alert] = @player.errors.full_messages.join('<br>')

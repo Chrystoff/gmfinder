@@ -30,8 +30,7 @@ class GamemastersController < ApplicationController
 
   def update
     begin
-      @gamemaster = Gamemaster.new(gamemaster_params)
-      @gamemaster.save!
+      @gamemaster.update!(gamemaster_params)
       redirect_to @gamemaster
     rescue
       flash.now[:alert] = @gamemaster.errors.full_messages.join('<br>')

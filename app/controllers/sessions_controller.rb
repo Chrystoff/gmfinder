@@ -30,8 +30,7 @@ class SessionsController < ApplicationController
 
   def update
     begin
-      @session = Session.new(session_params)
-      @session.save!
+      @session.update!(session_params)
       redirect_to @session
     rescue
       flash.now[:alert] = @session.errors.full_messages.join('<br>')
